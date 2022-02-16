@@ -1,0 +1,34 @@
+{
+  "name": "streamey",
+  "version": "1.0.0",
+  "description": "A node peer to peer messaging, voice and video chat application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Algo-code/Streamey.git"
+  },
+  "keywords": [
+    "p2p",
+    "node",
+    "react",
+    "voice",
+    "chat",
+    "video",
+    "chat"
+  ],
+  "author": "Eudrick Makiku, Simbarashe Matutu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Algo-code/Streamey/issues"
+  },
+  "homepage": "https://github.com/Algo-code/Streamey#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
