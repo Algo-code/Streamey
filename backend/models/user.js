@@ -24,10 +24,10 @@ const UserSchema = new Schema({
         type: String,
         default: '/files/images'
     },
-    chats: {
+    chats: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Chats'
-    }
+    }]
 }, {timestamps: true});
 
 module.exports = mongoose.model('User', UserSchema);
