@@ -1,4 +1,6 @@
-import { Mongoose, Schema } from 'mongoose';
+const  mongoose = require('mongoose');
+
+const Schema = mongoose.Schema
 
 
 const UserSchema = new Schema({
@@ -15,7 +17,7 @@ const UserSchema = new Schema({
         required: true
     },
     contacts: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Users'
     }],
     profileImageUrl: {
@@ -23,9 +25,9 @@ const UserSchema = new Schema({
         default: '/files/images'
     },
     chats: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Chats'
     }
 }, {timestamps: true});
 
-module.exports = Mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);

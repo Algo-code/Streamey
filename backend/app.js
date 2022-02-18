@@ -4,6 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const InitiateMongoServer = require('./config/db');
+
+InitiateMongoServer();
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -15,8 +19,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'files')));
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); //Allows what domains can communicate with the server
+  res.setHeader('Acess-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE'); //allows what methods the domain can use with the server
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');//allow clients to set content-type and send headers with authorization.
+  next();
+})
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/auth', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
