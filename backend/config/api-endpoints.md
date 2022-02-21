@@ -16,7 +16,7 @@ Action - register a user account
 
 ### User Login/Signin
 #### URL Endpoint (POST)
-/auth/signin
+/signin
 Action - perform user login
 
 ### Get User Profile/Data

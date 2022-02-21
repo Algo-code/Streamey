@@ -13,4 +13,9 @@ router.post('/signin', userController.loginUser);
 /* GET User Profile. */
 router.get('/me', auth, userController.getUser);
 
+router.post('/:user_id/contacts/add', auth, userController.addContact);
+
+router.post('/:user_id/chat/create', auth, userController.createChat);
+
+
 module.exports = router;
