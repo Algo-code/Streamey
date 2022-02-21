@@ -6,13 +6,15 @@ import Register from './Screens/Register';
 import Homescreen from './Screens/Homescreen';
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Homescreen />} exact />
-        <Route path='/Signup' element={<Register />} />
-        <Route path='/Login' element={<Login />} />
-      </Routes>
-    </Router>
+    <main style={{ minHeight: '100vh' }}>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Homescreen />} exact />
+          <Route path='/Signup' element={<Register />} />
+          <Route path='/Login' element={<Login />} />
+        </Routes>
+      </Router>
+    </main>
   );
 }
 
