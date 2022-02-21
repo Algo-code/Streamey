@@ -10,6 +10,7 @@ InitiateMongoServer();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var chatRouter = require('./routes/chats');
 
 var app = express();
 
@@ -27,7 +28,7 @@ app.use((req, res, next) => {
 })
 
 //app.use('/', indexRouter);
-app.use('/', usersRouter, indexRouter);
+app.use('/', usersRouter, chatRouter,indexRouter);
 
 
 

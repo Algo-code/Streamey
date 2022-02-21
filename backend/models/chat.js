@@ -11,9 +11,13 @@ const MessageSchema = new Schema({
         type: Date,
         default: Date.now()
     },
-    seen: {
-        type: Boolean,
-        default: false
+    status: {
+        type: String,
+        default: 'sent'
+    },
+    sentBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 })
 

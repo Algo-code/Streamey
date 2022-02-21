@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 
 require("dotenv").config();
 const { check, body, validationResult, Result } = require("express-validator");
-const Chat = require("../models/chat");
 
 //POST register user account
 exports.registerUser = [
@@ -195,47 +194,11 @@ exports.getUser = async (req, res, next) => {
   }
 };
 
-//POST create a chat with a user or group
-exports.createChat = async (req, res, next) => {
-  const user_id = req.params.user_id;
-  const contact_id = req.body.contact_id;
-  const partcpts = [user_id, contact_id];
-  const c_id = (user_id + contact_id);
-
-  const currentUser = await User.findById(user_id);
-  const otherUser = await User.findById(contact_id);
-  
-  Chat.findOne({participants: partcpts}).then(chatDoc => {
-      if(!chatDoc){
-        const chat = new Chat({
-            message: new Array(),
-            participants: partcpts,
-        });
-        return chat.save().then(newChatDoc => {
-            currentUser.chats.push(newChatDoc._id);
-            otherUser.chats.push(newChatDoc._id);
-            currentUser.save();
-            otherUser.save();
-            res.status(201).json({
-                message: 'Chat successfully created',
-                chat: newChatDoc, 
-            })
-        })
-      }else{
-          res.status(409).json({
-              message: 'Chat Already exists',
-              chat: chatDoc,
-          })
-      }
-  }).catch(err=>{
-      throw err;
-  })
-};
 
 //POST add user to contact list
 exports.addContact = (req, res, next) => {
   const contact_id = req.body.contact_id;
-  const user_id = req.params.user_id;
+  const user_id = req.params.userId;
 
   User.findById(user_id)
     .then((user) => {
@@ -258,3 +221,7 @@ exports.addContact = (req, res, next) => {
       throw err;
     });
 };
+
+exports.sendMessage = (req, res, next) => {
+    const chat_id = req.params.chatId;
+}
