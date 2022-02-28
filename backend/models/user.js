@@ -18,7 +18,7 @@ const UserSchema = new Schema({
     },
     contacts: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'User'
     }],
     profileImageUrl: {
         type: String,
@@ -26,7 +26,7 @@ const UserSchema = new Schema({
     },
     chats: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Chats'
+        ref: 'Chat'
     }]
 }, {timestamps: true});
 

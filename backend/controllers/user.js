@@ -222,6 +222,3 @@ exports.addContact = (req, res, next) => {
     });
 };
 
-exports.sendMessage = (req, res, next) => {
-    const chat_id = req.params.chatId;
-}

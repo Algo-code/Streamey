@@ -13,7 +13,7 @@ router.post('/signin', userController.loginUser);
 /* GET User Profile. */
 router.get('/me', auth, userController.getUser);
 
-router.post('/:userId/contacts/add', auth, userController.addContact);
+router.post('/:userId/contacts/add', /*auth,*/ userController.addContact);
 
 
 
