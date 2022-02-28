@@ -163,6 +163,13 @@ exports.getAllChats = (req, res, next) => {
           err: err,
         });
       }
+
+      if(!results.currentUser){
+        return res.status(404).json({
+          message: "User Not Found"
+        });
+      }
+
       return res.status(200).json({
         message: "Action Successful",
         chats: results.currentUser.chats,
@@ -197,6 +204,13 @@ exports.getAllContacts = (req, res, next) => {
           err: err,
         });
       }
+
+      if(!results.currentUser){
+        return res.status(404).json({
+          message: "User Not Found"
+        });
+      }
+
       return res.status(200).json({
         message: "Action Successful",
         contacts: results.currentUser.contacts,
