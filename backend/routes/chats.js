@@ -12,4 +12,6 @@ router.get('/:userId/chats',/* auth,*/ chatController.getAllChats);
 
 router.get('/:userId/contacts',/* auth,*/ chatController.getAllContacts);
 
+router.get('/:userId/chat/:chatId', /*auth, */ chatController.getChat);
+
 module.exports = router;

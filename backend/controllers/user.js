@@ -222,3 +222,38 @@ exports.addContact = (req, res, next) => {
     });
 };
 
+
+//GET request to fetch a contact
+exports.getContact = (req, res, next) => {
+  const user_id = req.params.userId;
+  const contact_id = req.params.contactId;
+
+  User.findById(user_id).then(userDoc => {
+    if(!userDoc){
+      return res.status(404).json({
+        message: 'User Not Found'
+      });
+    }
+
+    if(userDoc.contacts.includes(contact_id)){
+      User.findById(contact_id)
+      .select('_id username email profileImageUrl')
+      .then(contactDoc =>{
+        return res.status(200).json({
+          message: 'Successful',
+          contact: contactDoc
+        })
+      })
+    }
+    
+    if(!userDoc.contacts.includes(contact_id)){
+      return res.status(404).json({
+        message:'Contact Not Found'
+      })
+    }
+    return res.status(500).json({
+      message: 'Something Went Wrong'
+    })
+  })
+}
+

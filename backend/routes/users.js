@@ -15,6 +15,8 @@ router.get('/me', auth, userController.getUser);
 
 router.post('/:userId/contacts/add', /*auth,*/ userController.addContact);
 
+router.get('/:userId/contact/:contactId',/*auth,*/userController.getContact);
+
 
 
 module.exports = router;
