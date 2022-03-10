@@ -11,7 +11,6 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import Avatar from '@mui/material/Avatar';
-
 const Chat = [
   {
     id: 1,
