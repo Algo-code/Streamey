@@ -53,7 +53,6 @@ const Chat = [
 const HomeChatPreview = () => {
   return (
     <React.Fragment>
-      {' '}
       <Paper
         square
         sx={{ pb: '50px' }}
