@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import AdSpace from '../Components/AdSpace';
 import Header from '../Components/Header';
 import HomeChat from '../Components/HomeChat';
-import HomeChatPreview from '../Components/HomeChatPreview';
 import SearchBox from '../Components/SearchBox';
 const Homescreen = () => {
   return (
@@ -14,18 +13,13 @@ const Homescreen = () => {
       <Container>
         <SearchBox />
         <Row>
-          <Grid container spacing={3}>
-            <Grid item md={3}>
-              {' '}
-              <HomeChatPreview />
-            </Grid>
-
-            <Grid item md={6}>
+          <Grid container spacing={2}>
+            <Grid item md={10}>
               {' '}
               <HomeChat />
             </Grid>
 
-            <Grid item md={3}>
+            <Grid item md={2}>
               {' '}
               <AdSpace />
             </Grid>
