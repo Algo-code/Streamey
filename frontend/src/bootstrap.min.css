@@ -412,11 +412,11 @@ legend + * {
 ::-webkit-inner-spin-button {
   height: auto;
 }
-[type='search'] {
+[type='SearchBox'] {
   outline-offset: -2px;
   -webkit-appearance: textfield;
 }
-::-webkit-search-decoration {
+::-webkit-searchbox-decoration {
   -webkit-appearance: none;
 }
 ::-webkit-color-swatch-wrapper {

@@ -5,11 +5,8 @@ const auth = require('../config/auth');
 const userController = require('../controllers/user');
 
 /* GET home page. */
-router.get('/home', function(req, res, next) {
-  res.status(200).json({
-    message: 'Welcome Home'
-  });
+router.get('/', function (req, res, next) {
+  res.render('index', { title: 'Express' });
 });
-
 
 module.exports = router;
