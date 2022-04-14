@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
 
 const pages = ['About Us'];
 const settings = ['Profile', 'Account', 'Logout'];
@@ -41,15 +42,16 @@ const Header = () => {
     >
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
-          <Typography
-            variant='h6'
-            noWrap
-            component='div'
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            Streamy
-          </Typography>
-
+          <Link to='/' style={{ textDecoration: 'none' }}>
+            <Typography
+              variant='h6'
+              noWrap
+              component='div'
+              sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            >
+              Streamy
+            </Typography>
+          </Link>
           <Box
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
             style={{ color: 'black' }}
