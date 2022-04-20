@@ -5,6 +5,7 @@ import {
   Avatar,
   IconButton,
   Paper,
+  Divider,
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
@@ -17,12 +18,12 @@ import MessageList from './MessageList';
 
 const ChatPanel = () => {
   const location = useLocation();
-  const { userName } = location.state;
+  const { userName, messages, id } = location.state;
+
   return (
-    <Paper>
-      <Card fullWidth style={{ borderBottom: 'none' }}>
+    <Paper style={{ borderRadius: '10px', paddingBottom: '2ch' }}>
+      <Card style={{ borderBottom: 'none', borderRadius: '10px 10px 0px 0px' }}>
         <CardHeader
-          fullWidth
           avatar={<Avatar alt={userName} src='path' />}
           title={userName}
           action={
@@ -33,9 +34,17 @@ const ChatPanel = () => {
         />
       </Card>
       <ChatContainer>
-        <MessageList />
+        <MessageList messages={messages} id={id} />
       </ChatContainer>
-
+      <Divider
+        variant='middle'
+        sx={{
+          marginLeft: '3ch',
+          marginRight: '3ch',
+          marginTop: '1ch',
+          marginBottom: '2ch',
+        }}
+      />
       <InputMessage />
     </Paper>
   );
