@@ -3,7 +3,7 @@ import { css } from '@emotion/css';
 import ScrollToBottom from 'react-scroll-to-bottom';
 
 const ROOT_CSS = css({
-  height: '40vh',
+  height: '45vh',
   width: '100%',
 });
 const ChatContainer = ({ children }) => {

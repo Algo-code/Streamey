@@ -4,37 +4,168 @@ export const Chat = [
     userName: 'Tony Stark',
     lastMsg: 'one two thre four five seven ten 12  ',
     person: '/static/images/avatar/4.jpg',
-    messages: [],
+    messages: [
+      { fromId: '1', type: 'text', content: 'hello Mr stark heeer', time: '' },
+      { fromId: '2', type: 'text', content: 'hie tony', time: '' },
+
+      { fromId: '1', type: 'text', content: 'How are you?', time: '' },
+
+      { fromId: '2', type: 'text', content: 'fine', time: '' },
+
+      {
+        fromId: '2',
+        type: 'text',
+        content: 'SON Formatter and JSON Validator',
+        time: '',
+      },
+      { fromId: '1', type: 'text', content: 'Just wandering…', time: '' },
+      {
+        fromId: '2',
+        type: 'text',
+        content: 'ok lets make this happen',
+        time: '',
+      },
+    ],
   },
   {
     id: 2,
     userName: 'Chris',
     lastMsg: 'I funded then one two thre four five seven ten 12  ',
     person: '/static/images/avatar/4.jpg',
+    messages: [
+      { fromId: '1', type: 'text', content: 'hello it thor', time: '' },
+      { fromId: '2', type: 'text', content: 'hie thor', time: '' },
+
+      { fromId: '1', type: 'text', content: 'How are you?', time: '' },
+
+      { fromId: '2', type: 'text', content: 'fine', time: '' },
+
+      {
+        fromId: '2',
+        type: 'text',
+        content: 'SON Formatter and JSON Validator',
+        time: '',
+      },
+      { fromId: '1', type: 'text', content: 'Just wandering…', time: '' },
+      {
+        fromId: '2',
+        type: 'text',
+        content: 'ok lets make this happen',
+        time: '',
+      },
+    ],
   },
   {
     id: 3,
     userName: 'Steve Rogers',
     lastMsg: 'The  dandles will be on  five seven ten 12  ',
     person: '/static/images/avatar/4.jpg',
+    messages: [
+      { fromId: '1', type: 'text', content: 'hello Stvee hree', time: '' },
+      { fromId: '3', type: 'text', content: 'hie Cap', time: '' },
+
+      { fromId: '1', type: 'text', content: 'How are you?', time: '' },
+
+      { fromId: '3', type: 'text', content: 'fine', time: '' },
+
+      {
+        fromId: '3',
+        type: 'text',
+        content: 'SON Formatter and JSON Validator',
+        time: '',
+      },
+      { fromId: '1', type: 'text', content: 'Just wandering…', time: '' },
+      {
+        fromId: '3',
+        type: 'text',
+        content: 'ok lets make this happen',
+        time: '',
+      },
+    ],
   },
   {
     id: 4,
     userName: 'Antony',
     lastMsg: 'one two thre four five seven ten 12  ',
     person: '/static/images/avatar/4.jpg',
+    messages: [
+      { fromId: '1', type: 'text', content: 'hello this is T', time: '' },
+      { fromId: '4', type: 'text', content: 'hie T', time: '' },
+
+      { fromId: '1', type: 'text', content: 'How are you?', time: '' },
+
+      { fromId: '4', type: 'text', content: 'fine', time: '' },
+
+      {
+        fromId: '2',
+        type: 'text',
+        content: 'SON Formatter and JSON Validator',
+        time: '',
+      },
+      { fromId: '1', type: 'text', content: 'Just wandering…', time: '' },
+      {
+        fromId: '2',
+        type: 'text',
+        content: 'ok lets make this happen',
+        time: '',
+      },
+    ],
   },
   {
     id: 5,
     userName: 'Medow',
     lastMsg: 'one two thre four five seven ten 12  ',
     person: '/static/images/avatar/4.jpg',
+    messages: [
+      { fromId: '5', type: 'text', content: 'hello this is MEDOW', time: '' },
+      { fromId: '2', type: 'text', content: 'hie', time: '' },
+
+      { fromId: '5', type: 'text', content: 'How are you?', time: '' },
+
+      { fromId: '2', type: 'text', content: 'fine', time: '' },
+
+      {
+        fromId: '2',
+        type: 'text',
+        content: 'SON Formatter and JSON Validator',
+        time: '',
+      },
+      { fromId: '5', type: 'text', content: 'Just wandering…', time: '' },
+      {
+        fromId: '2',
+        type: 'text',
+        content: 'ok lets make this happen',
+        time: '',
+      },
+    ],
   },
   {
     id: 6,
     userName: 'Natasha',
     lastMsg: 'I will bring the cake',
     person: '/static/images/avatar/4.jpg',
+    messages: [
+      { fromId: '6', type: 'text', content: 'hello this is Natasha', time: '' },
+      { fromId: '2', type: 'text', content: 'hie', time: '' },
+
+      { fromId: '6', type: 'text', content: 'How are you?', time: '' },
+
+      { fromId: '2', type: 'text', content: 'fine', time: '' },
+
+      {
+        fromId: '6',
+        type: 'text',
+        content: 'SON Formatter and JSON Validator',
+        time: '',
+      },
+      { fromId: '1', type: 'text', content: 'Just wandering…', time: '' },
+      {
+        fromId: '6',
+        type: 'text',
+        content: 'ok lets make this happen',
+        time: '',
+      },
+    ],
   },
 ];
 

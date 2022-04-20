@@ -3,3 +3,13 @@
   margin: 0;
   box-sizing: border-box;
 }
+#InputMessageIcon{
+  color: white;
+  background-color: #A9C97D;
+  border-radius: 100%;
+  margin-left: 5px;
+  font-size: 35px;
+  padding: 5px;
+  
+
+}

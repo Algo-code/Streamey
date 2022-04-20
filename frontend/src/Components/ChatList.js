@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import Typography from '@mui/material/Typography';
-
-import { Button, Divider, ListItem } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import { Button, Divider, Fab, ListItem } from '@mui/material';
 import List from '@mui/material/List';
 
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -18,7 +18,6 @@ export default function ChatList() {
       <Typography variant='h5' sx={{ position: 'static' }}>
         Chats
       </Typography>
-      <Button>New Chat</Button>
       <List
         sx={{
           width: '100%',
@@ -31,11 +30,16 @@ export default function ChatList() {
         }}
         subheader={<li />}
       >
-        {Chat.map(({ id, userName, lastMsg, person }) => (
+        {Chat.map(({ id, userName, lastMsg, person, messages }) => (
           <Link
             key={id}
             to={`/chat/${id}`}
-            state={{ userName: userName, person: person }}
+            state={{
+              userName: userName,
+              person: person,
+              messages: messages,
+              id: id,
+            }}
             style={{ textDecoration: 'none' }}
           >
             <ListItem className='m-0 p-1' key={id} button>
@@ -51,6 +55,24 @@ export default function ChatList() {
             <Divider variant='inset' component='li' />
           </Link>
         ))}
+        <Fab
+          className='d-flex ml-auto'
+          color='primary'
+          aria-label='add'
+          size='small'
+          style={{
+            backgroundColor: '#A9C97D',
+            position: 'absolute',
+            bottom: 16,
+            right: 16,
+          }}
+        >
+          <AddIcon
+            style={{
+              color: '#ffffff',
+            }}
+          />
+        </Fab>
       </List>
     </>
   );
