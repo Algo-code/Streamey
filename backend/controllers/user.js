@@ -83,7 +83,6 @@ exports.loginUser = [
   check("password").escape(),
   async (req, res, next) => {
     const errors = validationResult(req);
-    console.log(errors.array());
     if (!errors.isEmpty()) {
       const username = req.body.username;
       const password = req.body.password;
@@ -119,7 +118,8 @@ exports.loginUser = [
           (err, token) => {
             if (err) throw err;
             res.status(200).json({
-              token,
+              "token":token,
+              "userID": user._id
             });
           }
         );
@@ -164,7 +164,8 @@ exports.loginUser = [
           (err, token) => {
             if (err) throw err;
             res.status(200).json({
-              token,
+              "token":token,
+              "userID": user._id
             });
           }
         );

@@ -148,6 +148,7 @@ exports.getAllChats = (req, res, next) => {
           .select("_id")
           .populate({
             path: "chats",
+            populate:{path:"participants",select:"username"},
             options: {
               sort: { updatedAt: "-1" },
             },
