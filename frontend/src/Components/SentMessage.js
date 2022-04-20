@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 
 const SentMessage = ({ content }) => {
   return (
@@ -21,6 +21,7 @@ const SentMessage = ({ content }) => {
             backgroundColor: '#A9C97D',
             wordWrap: 'breakWord',
             padding: '1ch',
+
             borderRadius: '10px 0px 10px 10px',
           }}
         >
@@ -28,7 +29,7 @@ const SentMessage = ({ content }) => {
         </Typography>
         <div
           className='d-flex flex-row-reverse justify-content-between'
-          style={{ width: 'inherit' }}
+          style={{ width: 'inherit', visibility: 'hidden' }}
         >
           <Typography>12:32pm</Typography>
           <Typography>Seen</Typography>

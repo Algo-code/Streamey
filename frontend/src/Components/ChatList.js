@@ -58,13 +58,12 @@ export default function ChatList() {
         <Fab
           className='d-flex ml-auto'
           color='primary'
-          aria-label='add'
           size='small'
           style={{
             backgroundColor: '#A9C97D',
-            position: 'absolute',
-            bottom: 16,
-            right: 16,
+            position: 'sticky',
+            bottom: '10%',
+            left: '80%',
           }}
         >
           <AddIcon

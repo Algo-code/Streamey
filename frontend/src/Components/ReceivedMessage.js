@@ -22,6 +22,7 @@ const ReceivedMessage = ({ content }) => {
             wordWrap: 'breakWord',
             padding: '1ch',
             borderRadius: '0px 10px 10px 10px',
+            textAlign: 'left',
           }}
         >
           {content}
