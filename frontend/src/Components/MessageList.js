@@ -5,11 +5,11 @@ import SentMessage from './SentMessage';
 const MessageList = ({ messages, id }) => {
   return (
     <div style={{ padding: '1ch' }}>
-      {messages.map(({ fromId, type, content }) =>
+      {messages.map(({ fromId, type, content, index }) =>
         fromId == id ? (
-          <SentMessage content={content} />
+          <SentMessage content={content} key={index} />
         ) : (
-          <ReceivedMessage content={content} />
+          <ReceivedMessage content={content} key={index} />
         )
       )}
     </div>
