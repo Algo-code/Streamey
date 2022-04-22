@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Typography from '@mui/material/Typography';
 import AddIcon from '@mui/icons-material/Add';
-import { Button, Divider, Fab, ListItem } from '@mui/material';
+import { Divider, Fab, ListItem } from '@mui/material';
 import List from '@mui/material/List';
 
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -49,7 +49,7 @@ export default function ChatList() {
               <ListItemText
                 primary={userName}
                 secondary={lastMsg}
-                style={{ color: 'primary' }}
+                style={{ color: '#000', fontWeight: 'bold' }}
               />
             </ListItem>
             <Divider variant='inset' component='li' />

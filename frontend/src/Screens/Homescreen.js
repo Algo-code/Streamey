@@ -17,12 +17,16 @@ const Homescreen = () => {
         <SearchBox />
 
         <Row>
-          <Grid container spacing={3}>
-            <Grid item md={3}>
+          <Grid
+            container
+            spacing={{ xs: 1, md: 2 }}
+            direction={{ xs: 'column', md: 'row' }}
+          >
+            <Grid item sx={12} md={3}>
               {' '}
               <ChatList />
             </Grid>
-            <Grid item md={7}>
+            <Grid item sx={12} md={6}>
               <Outlet />
             </Grid>
             <Grid item md={2}>
