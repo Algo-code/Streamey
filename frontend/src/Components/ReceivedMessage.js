@@ -1,7 +1,16 @@
 import { Box, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 
 const ReceivedMessage = ({ content }) => {
+  const [read, setRead] = useState('hidden');
+  const handleVisibility = (e) => {
+    if (read === 'hidden') {
+      setRead('visible');
+    } else {
+      setRead('hidden');
+    }
+  };
+
   return (
     <div
       className='d-flex flex-row'
@@ -24,14 +33,17 @@ const ReceivedMessage = ({ content }) => {
             borderRadius: '0px 10px 10px 10px',
             textAlign: 'left',
           }}
+          onClick={handleVisibility}
         >
           {content}
         </Typography>
         <div
           className='d-flex flex-row justify-content-between'
-          style={{ width: 'inherit' }}
+          style={{ width: 'inherit', visibility: read }}
         >
-          <Typography>12:32pm</Typography>
+          <Typography style={{ fontSize: '12px', fontWeight: 'bold' }}>
+            12:32pm
+          </Typography>
         </div>
       </Box>
     </div>

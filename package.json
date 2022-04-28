@@ -4,7 +4,11 @@
   "description": "A node peer to peer messaging, voice and video chat application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/app",
+    "server": "nodemon ./backend/bin/www",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -29,6 +33,7 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "concurrently": "^7.1.0",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1"
   }
