@@ -11,7 +11,7 @@ router.post('/register', userController.registerUser);
 router.post('/signin', userController.loginUser);
 
 /* GET User Profile. */
-router.get('/me', auth, userController.getUser);
+router.get('/:userId/me', /*auth,*/ userController.getUser);
 
 router.post('/:userId/contacts/add', /*auth,*/ userController.addContact);
 

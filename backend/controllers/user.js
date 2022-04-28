@@ -180,14 +180,28 @@ exports.loginUser = [
 ];
 
 //GET return current user profile
-exports.getUser = async (req, res, next) => {
+exports.getUser = (req, res, next) => {
   try {
-    const user = await User.findById(req.user.id, { password: 0 });
-    res.status(200).json({
-      message: "request successful",
-      user: user,
+    User.findById(mongoose.Types.ObjectId(req.params.userId), { password: 0, chats:0, contacts: 0, }).then(user => {
+      if(user != null){
+        res.status(200).json({
+          message: "request successful",
+          user: user,
+        });
+        console.log('USERID: '+req.params.userId);
+        console.log('REQ: '+req);
+      } else{
+        console.log('USERID: '+req.params.userId);
+        res.status(401).json({
+          message: "Bad Request"
+          
+        })
+      }
     });
+    
   } catch (error) {
+    console.log('REQ2: '+req);
+    console.log(error);
     res.status(400).json({
       message: "Error in fetching user",
       error: error.array(),
