@@ -39,7 +39,12 @@ const SentMessage = ({ content }) => {
         </Typography>
         <div
           className='d-flex flex-row-reverse justify-content-between'
-          style={{ width: 'inherit', visibility: read, fontSize: '3px' }}
+          style={{
+            width: 'inherit',
+            visibility: read,
+            fontSize: '3px',
+            transition: '3s',
+          }}
         >
           <Typography style={{ fontSize: '12px', fontWeight: 'bold' }}>
             12:32pm

@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import FormContainer from './FormContainer';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../actions/UserActions';
+import Message from './Message';
+import Loader from './Loader';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+  const history = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  //const redirect = location.search ? location.search.split('=')[1] : '/';
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(login(username, password));
+  };
+
+  useEffect(() => {
+    if (userInfo) {
+      history('/home');
+    } else {
+      return loading;
+    }
+  }, [history, userInfo, loading, dispatch]);
+
   return (
     <FormContainer>
       <Form>
@@ -18,14 +44,26 @@ const LoginForm = () => {
             <h2>Welcome Back!</h2>
           </Form.Label>
         </Form.Group>
-        <Form.Group className='mb-3' controlId='formBasicEmail'>
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type='email' placeholder='Enter your email address' />
+        {error && <Message severity='error'>{error}</Message>}
+        {loading && <Loader />}
+        <Form.Group className='mb-3' controlId='username'>
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter your username'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
         </Form.Group>
 
-        <Form.Group className='mb-3' controlId='formBasicPassword'>
+        <Form.Group className='mb-3' controlId='password'>
           <Form.Label>Password</Form.Label>
-          <Form.Control type='password' placeholder='Enter your password' />
+          <Form.Control
+            type='password'
+            placeholder='Enter your password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </Form.Group>
         <Form.Group
           className='mb-3 d-flex justify-content-between'
@@ -34,7 +72,12 @@ const LoginForm = () => {
           <Form.Check type='checkbox' label='Remember Me' />
           <a href='/'>Forgot Password?</a>
         </Form.Group>
-        <Button variant='primary' type='submit' style={{ width: '100%' }}>
+        <Button
+          variant='primary'
+          onClick={handleLogin}
+          username='test1'
+          style={{ width: '100%' }}
+        >
           Sign in
         </Button>
 

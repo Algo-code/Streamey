@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 
 import Typography from '@mui/material/Typography';
 import AddIcon from '@mui/icons-material/Add';
@@ -11,8 +11,10 @@ import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
 import { Chat } from '../data';
+import Message from './Message';
+import Loader from './Loader';
 
-export default function ChatList() {
+export default function ChatList({ contacts }) {
   return (
     <>
       <Typography variant='h5' sx={{ position: 'static' }}>
@@ -30,31 +32,40 @@ export default function ChatList() {
         }}
         subheader={<li />}
       >
-        {Chat.map(({ id, userName, lastMsg, person, messages }) => (
-          <Link
-            key={id}
-            to={`/chat/${id}`}
-            state={{
-              userName: userName,
-              person: person,
-              messages: messages,
-              id: id,
-            }}
-            style={{ textDecoration: 'none' }}
-          >
-            <ListItem className='m-0 p-1' key={id} button>
-              <ListItemAvatar>
-                <Avatar alt={userName} src={person} />
-              </ListItemAvatar>
-              <ListItemText
-                primary={userName}
-                secondary={lastMsg}
-                style={{ color: '#000', fontWeight: 'bold' }}
-              />
-            </ListItem>
-            <Divider variant='inset' component='li' />
-          </Link>
-        ))}
+        {contacts ? (
+          contacts.contacts.map(
+            ({ _id, username, lastMsg, profileImageUrl }) => (
+              <Link
+                key={_id}
+                to={`/home/chat/${_id}`}
+                state={{
+                  username: username,
+                  profileImageUrl: profileImageUrl,
+
+                  id: _id,
+                }}
+                style={{ textDecoration: 'none' }}
+              >
+                <ListItem className='m-0 p-1' key={_id} button>
+                  <ListItemAvatar>
+                    <Avatar
+                      alt={username.toUpperCase()}
+                      src={profileImageUrl}
+                    />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary={username}
+                    secondary={lastMsg}
+                    style={{ color: '#000', fontWeight: 'bold' }}
+                  />
+                </ListItem>
+                <Divider variant='inset' component='li' />
+              </Link>
+            )
+          )
+        ) : (
+          <Loader />
+        )}
         <Fab
           className='d-flex ml-auto'
           color='primary'

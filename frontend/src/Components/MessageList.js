@@ -7,7 +7,7 @@ const MessageList = ({ messages, id }) => {
     <div style={{ padding: '1ch' }}>
       {messages.map(({ fromId, type, content, index }) =>
         fromId == id ? (
-          <SentMessage content={content} key={index} />
+          <SentMessage content={content} key={id} />
         ) : (
           <ReceivedMessage content={content} key={index} />
         )

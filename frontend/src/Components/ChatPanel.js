@@ -17,14 +17,36 @@ import MessageList from './MessageList';
 
 const ChatPanel = () => {
   const location = useLocation();
-  const { userName, messages, id } = location.state;
+  const { username, _id, profileImageUrl } = location.state;
 
+  const messages = [
+    { fromId: '6', type: 'text', content: 'hello this is Natasha', time: '' },
+    { fromId: '2', type: 'text', content: 'hie', time: '' },
+
+    { fromId: '6', type: 'text', content: 'How are you?', time: '' },
+
+    { fromId: '2', type: 'text', content: 'fine', time: '' },
+
+    {
+      fromId: '6',
+      type: 'text',
+      content: 'SON Formatter and JSON Validator',
+      time: '',
+    },
+    { fromId: '1', type: 'text', content: 'Just wandering…', time: '' },
+    {
+      fromId: '6',
+      type: 'text',
+      content: 'ok lets make this happen',
+      time: '',
+    },
+  ];
   return (
     <Paper style={{ borderRadius: '10px', paddingBottom: '2ch' }}>
       <Card style={{ borderBottom: 'none', borderRadius: '10px 10px 0px 0px' }}>
         <CardHeader
-          avatar={<Avatar alt={userName} src='path' />}
-          title={userName}
+          avatar={<Avatar alt={username.toUpperCase()} src={profileImageUrl} />}
+          title={username}
           action={
             <IconButton>
               <MoreVertIcon />
@@ -33,7 +55,7 @@ const ChatPanel = () => {
         />
       </Card>
       <ChatContainer>
-        <MessageList messages={messages} id={id} />
+        <MessageList messages={messages} _id={_id} />
       </ChatContainer>
       <Divider
         variant='middle'

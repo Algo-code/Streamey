@@ -5,8 +5,9 @@ require('dotenv').config();
 //const MONGOURI = process.env.MONGO_URI;
 
 //mongodb uri
-const MONGOURI = process.env.MONGO_URI;
-
+//const MONGOURI = process.env.MONGO_URI;
+const MONGOURI = 'mongodb://127.0.0.1:27017/localStreamy';
+console.log(MONGOURI);
 const InitiateMongoServer = async () => {
   try {
     await mongoose.connect(MONGOURI, {
