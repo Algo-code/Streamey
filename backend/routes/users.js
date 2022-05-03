@@ -11,7 +11,13 @@ router.post('/api/register', userController.registerUser);
 router.post('/api/signin', userController.loginUser);
 
 /* GET User Profile. */
-router.get('/api/me', auth, userController.getUser);
+ 
+router.get('/api/:userId/me', /*auth,*/ userController.getUser);
+
+router.post('/api/:userId/contacts/add', /*auth,*/ userController.addContact);
+
+router.get('/api/:userId/contact/:contactId',/*auth,*/userController.getContact);
+ 
 
 router.post('/api/:userId/contacts/add', /*auth,*/ userController.addContact);
 
