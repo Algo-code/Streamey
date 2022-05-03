@@ -8,17 +8,32 @@ import {
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import ChatContainer from './ChatContainer';
 import InputMessage from './InputMessage';
 import MessageList from './MessageList';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserChats } from '../actions/ChatActions';
 
 const ChatPanel = () => {
   const location = useLocation();
   const { username, _id, profileImageUrl } = location.state;
 
+  const userChats = useSelector((state) => state.userChats);
+  const { loading: loadingChats, error: errorChats, chats } = userChats;
+  const chatId = [];
+
+  const dispatch = useDispatch();
+  const id = localStorage.getItem('id');
+
+  useEffect(() => {
+    dispatch(getUserChats(id));
+  }, [dispatch, id]);
+  chats.chats.forEach((element) => {
+    chatId.push(element._id);
+  });
   const messages = [
     { fromId: '6', type: 'text', content: 'hello this is Natasha', time: '' },
     { fromId: '2', type: 'text', content: 'hie', time: '' },
@@ -55,7 +70,7 @@ const ChatPanel = () => {
         />
       </Card>
       <ChatContainer>
-        <MessageList messages={messages} _id={_id} />
+        <MessageList messages={messages} _id={_id} chatId={chatId} />
       </ChatContainer>
       <Divider
         variant='middle'

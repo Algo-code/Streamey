@@ -12,7 +12,7 @@ import {
   userProfileReducer,
   userRegisterReducer,
 } from './reducers/UserReducers';
-import { userChatsReducer } from './reducers/ChatReducers';
+import { chatReducer, userChatsReducer } from './reducers/ChatReducers';
 const reducer = combineReducers({
   //useer stuff
   userLogin: userLoginReducer,
@@ -23,6 +23,7 @@ const reducer = combineReducers({
 
   //chat statee
   userChats: userChatsReducer,
+  specificChat: chatReducer,
   //chat state
 });
 

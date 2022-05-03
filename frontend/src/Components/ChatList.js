@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Typography from '@mui/material/Typography';
 import AddIcon from '@mui/icons-material/Add';
@@ -10,8 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 import Avatar from '@mui/material/Avatar';
 import { Link } from 'react-router-dom';
-import { Chat } from '../data';
-import Message from './Message';
+
 import Loader from './Loader';
 
 export default function ChatList({ contacts }) {
