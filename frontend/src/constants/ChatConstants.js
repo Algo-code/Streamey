@@ -1,0 +1,7 @@
+export const USER_CHATS_REQUEST = 'USER_CHATS_REQUEST';
+export const USER_CHATS_SUCCESS = 'USER_CHATS_SUCCESS';
+export const USER_CHATS_FAIL = 'USER_CHATS_FAIL';
+
+export const CHAT_REQUEST = 'CHAT_REQUEST';
+export const CHAT_SUCCESS = 'CHAT_SUCCESS';
+export const CHAT_FAIL = 'CHAT_FAIL';

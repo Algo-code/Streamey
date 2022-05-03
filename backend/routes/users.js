@@ -5,18 +5,25 @@ const auth = require('../config/auth');
 const userController = require('../controllers/user');
 
 /* POST Register User Account. */
-router.post('/register', userController.registerUser);
+router.post('/api/register', userController.registerUser);
 
 /* POST Login User. */
-router.post('/signin', userController.loginUser);
+router.post('/api/signin', userController.loginUser);
 
 /* GET User Profile. */
-router.get('/:userId/me', /*auth,*/ userController.getUser);
+ 
+router.get('/api/:userId/me', /*auth,*/ userController.getUser);
 
-router.post('/:userId/contacts/add', /*auth,*/ userController.addContact);
+router.post('/api/:userId/contacts/add', /*auth,*/ userController.addContact);
 
-router.get('/:userId/contact/:contactId',/*auth,*/userController.getContact);
+router.get('/api/:userId/contact/:contactId',/*auth,*/userController.getContact);
+ 
 
+router.post('/api/:userId/contacts/add', /*auth,*/ userController.addContact);
 
+router.get(
+  '/api/:userId/contact/:contactId',
+  /*auth,*/ userController.getContact
+);
 
 module.exports = router;
