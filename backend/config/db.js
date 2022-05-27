@@ -2,14 +2,13 @@ const res = require('express/lib/response');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-//const MONGOURI = process.env.MONGO_URI;
 
 //mongodb uri
 const MONGOURI = process.env.MONGO_URI;
 
 const InitiateMongoServer = async () => {
   try {
-    await mongoose.connect(MONGOURI, {
+    mongoose.connect(MONGOURI, {
       useNewUrlParser: true,
     });
     console.log('Connected to MongoDB!!');

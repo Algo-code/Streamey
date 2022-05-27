@@ -7,7 +7,10 @@
 var app = require('../app');
 var debug = require('debug')('backend:server');
 var http = require('http');
-const { Socket } = require('socket.io');
+
+const WebSocket = require('ws');
+
+//const { Socket } = require('socket.io');
 
 var onlineUserCount = 0;
 
@@ -22,27 +25,44 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+ const server = http.createServer(app);
+ const { Server } = require("socket.io");
 
 /**
  * Listen on provided port, on all network interfaces.
  */
+server.listen(port);
 
-const socketServer = server.listen(port);
-const io = require('../config/socket').init(socketServer, {
-  cors: {
-    origin: "http://localhost:5000",
-  }
-});
 server.on('error', onError);
 server.on('listening', onListening);
-io.on('connection', socket => {
+
+const wss = new WebSocket.Server({server: server});
+
+wss.on('connection', socket => {
   onlineUserCount++;
+  wss.emit('welcome');
+  socket.send('welcome to server');
+   
   console.log(onlineUserCount+' users connected');
-  socket.on('disconnect',()=>{
-    onlineUserCount--;
-    console.log('user disconnected. There are '+onlineUserCount+'users connected')
-  })
+});
+
+wss.on('disconnect', socket=>{
+  onlineUserCount--;
+  console.log('user disconnected. There are '+onlineUserCount+'users connected')
+});
+
+wss.on('close', socket=>{
+  onlineUserCount--;
+  console.log('user disconnected. There are '+onlineUserCount+'users connected')
+});
+
+wss.on('message', function message(data) {
+  console.log('received: %s', data);
+});
+
+wss.off('close', socket=>{
+  onlineUserCount--;
+  console.log('user disconnected.')
 })
 
 
