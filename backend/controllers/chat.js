@@ -1,7 +1,7 @@
-const User = require("../models/user");
-const Chat = require("../models/chat");
+const User = require('../models/user');
+const Chat = require('../models/chat');
 
-const async = require("async");
+const async = require('async');
 
 //POST create a chat with a user or group
 exports.createChat = async (req, res, next) => {
@@ -26,13 +26,13 @@ exports.createChat = async (req, res, next) => {
           currentUser.save();
           otherUser.save();
           res.status(201).json({
-            message: "Chat successfully created",
+            message: 'Chat successfully created',
             chat: newChatDoc,
           });
         });
       } else {
         res.status(409).json({
-          message: "Chat Already exists",
+          message: 'Chat Already exists',
           chat: chatDoc,
         });
       }
@@ -51,12 +51,12 @@ exports.sendMessage = (req, res, next) => {
     .then((user) => {
       if (!user) {
         return res.status(404).json({
-          message: "User does not exist",
+          message: 'User does not exist',
         });
       }
       if (!user.chats.includes(chat_id)) {
         return res.status(403).json({
-          message: "Action Unauthorised",
+          message: 'Action Unauthorised',
         });
       }
 
@@ -64,13 +64,13 @@ exports.sendMessage = (req, res, next) => {
         .then((chatDoc) => {
           if (!chatDoc) {
             return res.status(404).json({
-              message: "chat does not exist",
+              message: 'chat does not exist',
             });
           }
           const saveMsg = {
             message: msg,
             time: Date.now(),
-            status: "sent",
+            status: 'sent',
             sentBy: user_id,
           };
           chatDoc.messages.push(saveMsg);
@@ -78,7 +78,7 @@ exports.sendMessage = (req, res, next) => {
             .save()
             .then((chat) => {
               return res.status(201).json({
-                message: "Message Successfully sent",
+                message: 'Message Successfully sent',
                 chat: chat,
               });
             })
@@ -103,29 +103,28 @@ exports.getChat = (req, res, next) => {
     .then((userDoc) => {
       if (!userDoc) {
         return res.status(404).json({
-          message: "User Not Found",
+          message: 'User Not Found',
         });
       }
 
       if (!userDoc.chats.includes(chat_id)) {
         return res.status(403).json({
-          message: "Action Unauthorized",
+          message: 'Action Unauthorized',
         });
       }
       Chat.findById(chat_id)
         .then((chatDoc) => {
           if (!chatDoc) {
             return res.status(404).json({
-              message: "Chat was not found",
+              message: 'Chat was not found',
             });
           }
           if (!userDoc.chats.includes(chatDoc._id)) {
             return res.status(403).json({
-              message: "Action Unathorized",
+              message: 'Action Unathorized',
             });
           }
           return res.status(200).json({
-            message: "Action Successful",
             chat: chatDoc,
           });
         })
@@ -145,12 +144,13 @@ exports.getAllChats = (req, res, next) => {
     {
       currentUser: function (callback) {
         User.findById(user_id)
-          .select("_id")
+          .select('_id')
           .populate({
+ 
             path: "chats",
             populate:{path:"participants",select:"username email _id profileImageUrl"},
             options: {
-              sort: { updatedAt: "-1" },
+              sort: { updatedAt: '-1' },
             },
           })
           .exec(callback);
@@ -160,19 +160,18 @@ exports.getAllChats = (req, res, next) => {
       if (err) {
         console.log(err);
         return res.status(500).json({
-          message: "Something Went Wrong",
+          message: 'Something Went Wrong',
           err: err,
         });
       }
 
-      if(!results.currentUser){
+      if (!results.currentUser) {
         return res.status(404).json({
-          message: "User Not Found"
+          message: 'User Not Found',
         });
       }
 
       return res.status(200).json({
-        message: "Action Successful",
         chats: results.currentUser.chats,
       });
     }
@@ -186,12 +185,12 @@ exports.getAllContacts = (req, res, next) => {
     {
       currentUser: function (callback) {
         User.findById(user_id)
-          .select("_id")
+          .select('_id')
           .populate({
-            path: "contacts",
-            select: "username profileImageUrl email",
+            path: 'contacts',
+            select: 'username profileImageUrl email',
             options: {
-              sort: { username: "1" },
+              sort: { username: '1' },
             },
           })
           .exec(callback);
@@ -201,19 +200,18 @@ exports.getAllContacts = (req, res, next) => {
       if (err) {
         console.log(err);
         return res.status(500).json({
-          message: "Something Went Wrong",
+          message: 'Something Went Wrong',
           err: err,
         });
       }
 
-      if(!results.currentUser){
+      if (!results.currentUser) {
         return res.status(404).json({
-          message: "User Not Found"
+          message: 'User Not Found',
         });
       }
 
       return res.status(200).json({
-        message: "Action Successful",
         contacts: results.currentUser.contacts,
       });
     }
