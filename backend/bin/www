@@ -9,6 +9,7 @@ var debug = require('debug')('backend:server');
 var http = require('http');
 
 const WebSocket = require('ws');
+//import { WebSocket } from 'ws';
 
 //const { Socket } = require('socket.io');
 
@@ -40,30 +41,18 @@ const wss = new WebSocket.Server({server: server});
 
 wss.on('connection', socket => {
   onlineUserCount++;
-  wss.emit('welcome');
   socket.send('welcome to server');
-   
   console.log(onlineUserCount+' users connected');
+  socket.on('message', function message(data) {
+    console.log('received: %s', data);
+  });
+  socket.on('close', close => {
+    onlineUserCount--;
+    console.log('user disconnected. There are '+onlineUserCount+' users connected');
+    socket.send('good bye');
+  })
 });
 
-wss.on('disconnect', socket=>{
-  onlineUserCount--;
-  console.log('user disconnected. There are '+onlineUserCount+'users connected')
-});
-
-wss.on('close', socket=>{
-  onlineUserCount--;
-  console.log('user disconnected. There are '+onlineUserCount+'users connected')
-});
-
-wss.on('message', function message(data) {
-  console.log('received: %s', data);
-});
-
-wss.off('close', socket=>{
-  onlineUserCount--;
-  console.log('user disconnected.')
-})
 
 
 /**
